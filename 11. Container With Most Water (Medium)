@@ -1,0 +1,30 @@
+Code:
+class Solution {
+    public int maxArea(int[] height) {
+        int right = height.length - 1;
+        int left = 0;
+        int result;
+        int max = 0;
+        while(left < right){
+            if (height[left] > height[right]) {
+                result = height[right];
+            }
+            else {
+                result = height[left];
+            }
+            result = (right - left) * result;
+            if(result > max){
+                max = result;
+            }
+            if(height[left] < height[right]){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        return max;
+    }
+}
+
+TimeComplexity: O(n).
