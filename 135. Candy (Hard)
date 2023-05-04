@@ -1,0 +1,30 @@
+Code:
+class Solution {
+    public int candy(int[] ratings) {
+        int[] rate = new int[ratings.length];
+
+        for(int i=0; i<ratings.length; i++){
+            rate[i] = 1;
+        }
+
+        for(int i=1; i < ratings.length;i++){
+            if(ratings[i] > ratings[i-1]){
+                rate[i] = rate[i-1] + 1;
+            }
+        }
+
+        for(int i = ratings.length-2; i >= 0; i--){
+            if(ratings[i] > ratings[i+1]){
+                rate[i] = Math.max(rate[i], rate[i+1]+1);
+            }
+        }
+
+        int result = 0;
+
+        for(int i = 0;i < rate.length;i++){
+            result += rate[i];
+        }
+
+        return result;
+    }
+}
