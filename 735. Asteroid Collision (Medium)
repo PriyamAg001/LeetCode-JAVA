@@ -1,0 +1,37 @@
+Time complexity:
+
+Space complexity: O(1)
+
+Code
+class Solution {
+    public int[] asteroidCollision(int[] asteroids) {
+        for (int i = 0; i < asteroids.length; i++) {
+            int j = i - 1;
+            int key = asteroids[i];
+            if (key < 0) {
+                while (j >= 0 && asteroids[j] >= 0) {
+                    if (Math.abs(key) > asteroids[j]) {
+                        asteroids[j--] = 0;
+                    } 
+                    else if (Math.abs(key) == asteroids[j]) {
+                        asteroids[i] = 0;
+                        asteroids[j] = 0;
+                        break;
+                    } 
+                    else {
+                        asteroids[i] = 0;
+                        break;
+                    }
+                }
+            }
+        }
+        int[] result = new int[asteroids.length];
+        int index = 0;
+        for (int i = 0; i < asteroids.length; i++) {
+            if (asteroids[i] != 0) {
+                result[index++] = asteroids[i];
+            }
+        }
+        return Arrays.copyOf(result, index);
+    }
+}
