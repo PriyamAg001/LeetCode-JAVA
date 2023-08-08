@@ -1,4 +1,26 @@
 Code:
+// Brute Force:
+
+// class Solution {
+//     public int trap(int[] height) {
+//         int sum = 0;
+//         for (int i = 1; i < height.length - 1; i++) {
+//             int lmax = height[i];
+//             int rmax = height[i];
+//             for (int j=i-1; j >= 0; j--) {
+//                 lmax = Math.max(lmax, height[j]);
+//             }
+//             for (int k=i+1; k < height.length; k++) {
+//                 rmax = Math.max(rmax, height[k]);
+//             }
+//             sum += Math.min(lmax, rmax) - height[i];
+//         }
+//         return sum;
+//     }
+// }
+
+// Optimal Approach:
+
 class Solution {
     public int trap(int[] height) {
         int n = height.length;
